@@ -1,4 +1,5 @@
 import "./App.css";
+import Gallery from "./Gallery";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         </h2>
         <h3>My Portfolio</h3>
       </header>
+      <Gallery />
       <footer>
         <div>
           © 2022. This website was designed and coded by{" "}
