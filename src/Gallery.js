@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { saveShowWidth } from "./saveShowWidth";
+import { importAllImg } from "./importAllImg";
+import Project from "./Project";
 import "./Gallery.css";
 
 export default function Gallery() {
@@ -13,7 +16,7 @@ export default function Gallery() {
       setRows(updateImgWidth("start"));
       setTempImgList(images);
     } else {
-      saveShowWidth();
+      images = saveShowWidth(rows, images);
       setUpdateImages(images);
     }
 
@@ -21,7 +24,7 @@ export default function Gallery() {
       let tempRows = [];
       let row = {};
       if (folderName === "start") {
-        images = importAll(require.context("./img_md", true, /\./));
+        images = importAllImg(require.context("./img_md", true, /\./));
 
         images.map((project, index) => {
           project.imagesArray.map((image, i) => {
@@ -54,106 +57,13 @@ export default function Gallery() {
 
       return tempRows;
     }
-
-    function importAll(list) {
-      let images = null;
-      list.keys().map((img) => {
-        let folder = img.slice(2, 4);
-        let imgName = img.slice(8, 13);
-        let pathBeforeWidth = img.slice(0, 17);
-        let imgWidth = parseInt(
-          img.replace(pathBeforeWidth, "").replace(".jpg", "")
-        );
-
-        if (images === null) {
-          images = [];
-          let array = [];
-          array[0] = { imgName: imgName, imgWidth: imgWidth, showWidth: 0 };
-          let image = {
-            folder: folder,
-            openStatus: true,
-            imagesArray: array,
-          };
-          images[0] = image;
-        } else {
-          let openStatus = false;
-          if (images.length === 1) {
-            openStatus = true;
-          }
-          if (images[images.length - 1].folder === folder) {
-            let imagesArray = images[images.length - 1].imagesArray;
-            imagesArray[imagesArray.length] = {
-              imgName: imgName,
-              imgWidth: imgWidth,
-              showWidth: 0,
-            };
-          } else {
-            let array = [];
-            array[0] = { imgName: imgName, imgWidth: imgWidth, showWidth: 0 };
-            let image = {
-              folder: folder,
-              openStatus: openStatus,
-              imagesArray: array,
-            };
-            images[images.length] = image;
-          }
-        }
-
-        return true;
-      });
-
-      return images;
-    }
-
-    function saveShowWidth() {
-      rows.map((row) => {
-        let rowWidth = row.rowWidth;
-        row.imagesInRow.map((img) => {
-          let imgWidth =
-            images[img.imagesNumber].imagesArray[img.imagesArrayNumber]
-              .imgWidth;
-          let showWidth =
-            (imgWidth / rowWidth) * (100 - row.imagesInRow.length * 2);
-          images[img.imagesNumber].imagesArray[
-            img.imagesArrayNumber
-          ].showWidth = showWidth;
-          return true;
-        });
-        return true;
-      });
-    }
   }, [rows, tempImgList]);
 
   if (updateImages !== null) {
     return (
       <div className="Gallery">
         {updateImages.map((project, index) => {
-          return (
-            <span key={index} className={project.folder}>
-              {project.imagesArray.map((image, i) => {
-                if (!(!project.openStatus && i > 0)) {
-                  return (
-                    // <a key={i} href="/" width={image.showWidth + "%"}>
-                    <img
-                      key={i}
-                      src={require("./img_md/" +
-                        project.folder +
-                        "_md/" +
-                        image.imgName +
-                        "_md_" +
-                        image.imgWidth +
-                        ".jpg")}
-                      alt=""
-                      width={image.showWidth + "%"}
-                    />
-                    // </a>
-                  );
-                } else {
-                  return null;
-                }
-              })}
-            </span>
-          );
+          return <Project key={index} project={project} />;
         })}
       </div>
     );
