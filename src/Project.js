@@ -6,12 +6,14 @@ export default function Project({
   project,
   tempImgList,
   setTempImgList,
+  listChange,
   setListChange,
   updateImg,
 }) {
   const [images, setImages] = useState(null);
 
   useEffect(() => {
+    console.log("Project useEffect");
     let image = [];
     for (let i = 0; i < project.imagesArray.length; i++) {
       image[i] = (
@@ -50,6 +52,7 @@ export default function Project({
           project={project}
           tempImgList={tempImgList}
           setTempImgList={setTempImgList}
+          listChange={listChange}
           setListChange={setListChange}
         />
       </span>

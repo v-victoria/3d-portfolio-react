@@ -12,13 +12,16 @@ export default function Gallery() {
   const [updateImg, setUpdateImg] = useState(false);
 
   useEffect(() => {
+    console.log("useEffect");
     let rows = [];
     let images = tempImgList;
 
     if (!images) {
+      console.log("images===null");
       images = importAllImg(require.context("./img_md", true, /\./));
       setTempImgList(images);
     } else {
+      console.log("images update");
       rows = updateImgWidth(images);
       images = saveShowWidth(rows, images);
       setUpdatedImages(images);
@@ -30,12 +33,15 @@ export default function Gallery() {
     return (
       <div className="Gallery">
         {updatedImages.map((project, index) => {
+          console.log("Gallery");
+          console.log(listChange);
           return (
             <Project
               key={index}
               project={project}
               tempImgList={tempImgList}
               setTempImgList={setTempImgList}
+              listChange={listChange}
               setListChange={setListChange}
               updateImg={updateImg}
             />

@@ -5,6 +5,7 @@ export default function OpenCloseButton({
   project,
   tempImgList,
   setTempImgList,
+  listChange,
   setListChange,
 }) {
   function setImgList(projectIndex) {
@@ -21,7 +22,7 @@ export default function OpenCloseButton({
         }
       }
       setTempImgList(images);
-      setListChange((prevState) => !prevState);
+      setListChange(listChange ? false : true);
     } else {
       for (let i = 1; i < imagesArray.length; i++) {
         console.log("btn +");
@@ -31,7 +32,7 @@ export default function OpenCloseButton({
           images[projectIndex].openStatus = true;
         }
         setTempImgList(images);
-        setListChange((prevState) => !prevState);
+        setListChange(listChange ? false : true);
       }
     }
   }
