@@ -1,0 +1,17 @@
+.Project span {
+}
+.Project img {
+  margin: 0.5% 1%;
+}
+.Project img.img-clear {
+  margin: 0;
+}
+.Project a {
+  transition: all 1s ease-out;
+}
+.Project a.d-none {
+  display: none;
+}
+.Project a.d-inline {
+  display: inline;
+}

@@ -11,7 +11,12 @@ export function importAllImg(list) {
     if (images === null) {
       images = [];
       let array = [];
-      array[0] = { imgName: imgName, imgWidth: imgWidth, showWidth: 0 };
+      array[0] = {
+        imgName: imgName,
+        imgWidth: imgWidth,
+        showWidth: 0,
+        display: "inline",
+      };
       let image = {
         folder: folder,
         openStatus: true,
@@ -19,7 +24,12 @@ export function importAllImg(list) {
       };
       images[0] = image;
     } else {
+      let display = "none";
       let openStatus = false;
+
+      if (images.length < 3) {
+        display = "inline";
+      }
       if (images.length === 1) {
         openStatus = true;
       }
@@ -29,10 +39,16 @@ export function importAllImg(list) {
           imgName: imgName,
           imgWidth: imgWidth,
           showWidth: 0,
+          display: imagesArray.length === 0 ? "inline" : display,
         };
       } else {
         let array = [];
-        array[0] = { imgName: imgName, imgWidth: imgWidth, showWidth: 0 };
+        array[0] = {
+          imgName: imgName,
+          imgWidth: imgWidth,
+          showWidth: 0,
+          display: "inline",
+        };
         let image = {
           folder: folder,
           openStatus: openStatus,
