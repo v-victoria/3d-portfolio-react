@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import OpenCloseButton from "./OpenCloseButton";
+import { CSSTransition } from "react-transition-group";
 import "./Project.css";
 
 export default function Project({
@@ -24,25 +25,35 @@ export default function Project({
             project.imagesArray[i].display === "none" ? "d-none" : "d-inline"
           }
         >
-          <img
-            src={require("./img_md/" +
-              project.folder +
-              "_md/" +
-              project.imagesArray[i].imgName +
-              "_md_" +
-              project.imagesArray[i].imgWidth +
-              ".jpg")}
-            alt=""
-            width={project.imagesArray[i].showWidth + "%"}
-            className={
-              project.imagesArray[i].display === "none" ? "img-clear" : ""
+          <CSSTransition
+            in={updateImg}
+            timeout={
+              project.openStatus
+                ? i * 300
+                : (project.imagesArray.length - i) * 300
             }
-          />
+            classNames="my-node"
+          >
+            <img
+              src={require("./img_md/" +
+                project.folder +
+                "_md/" +
+                project.imagesArray[i].imgName +
+                "_md_" +
+                project.imagesArray[i].imgWidth +
+                ".jpg")}
+              alt=""
+              width={project.imagesArray[i].showWidth + "%"}
+              className={
+                project.imagesArray[i].display === "none" ? "img-clear" : ""
+              }
+            />
+          </CSSTransition>
         </a>
       );
     }
     setImages(image);
-  }, [updateImg, project.folder, project.imagesArray]);
+  }, [updateImg, project.folder, project.imagesArray, project.openStatus]);
 
   if (images) {
     return (

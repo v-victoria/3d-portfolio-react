@@ -13,16 +13,14 @@ export default function OpenCloseButton({
     let imagesArray = images[projectIndex].imagesArray;
 
     if (images[projectIndex].openStatus) {
-      for (let i = imagesArray.length - 1; i > 0; i--) {
+      for (let i = 1; i < imagesArray.length; i++) {
         console.log("btn -");
         imagesArray[i].display = "none";
         images[projectIndex].imagesArray = imagesArray;
-        if (i === 1) {
+        if (i === imagesArray.length - 1) {
           images[projectIndex].openStatus = false;
         }
       }
-      setTempImgList(images);
-      setListChange(listChange ? false : true);
     } else {
       for (let i = 1; i < imagesArray.length; i++) {
         console.log("btn +");
@@ -31,10 +29,10 @@ export default function OpenCloseButton({
         if (i === imagesArray.length - 1) {
           images[projectIndex].openStatus = true;
         }
-        setTempImgList(images);
-        setListChange(listChange ? false : true);
       }
     }
+    setTempImgList(images);
+    setListChange(!listChange);
   }
 
   function getFolderName(event) {

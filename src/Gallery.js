@@ -34,7 +34,6 @@ export default function Gallery() {
       <div className="Gallery">
         {updatedImages.map((project, index) => {
           console.log("Gallery");
-          console.log(listChange);
           return (
             <Project
               key={index}
