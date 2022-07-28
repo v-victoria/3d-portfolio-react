@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import OpenCloseButton from "./OpenCloseButton";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 import "./Project.css";
 
 export default function Project({
@@ -14,7 +14,6 @@ export default function Project({
   const [images, setImages] = useState(null);
 
   useEffect(() => {
-    console.log("Project useEffect");
     let image = [];
     for (let i = 0; i < project.imagesArray.length; i++) {
       image[i] = (
@@ -25,30 +24,22 @@ export default function Project({
             project.imagesArray[i].display === "none" ? "d-none" : "d-inline"
           }
         >
-          <CSSTransition
-            in={updateImg}
-            timeout={
-              project.openStatus
-                ? i * 300
-                : (project.imagesArray.length - i) * 300
+          {/* <CSSTransition in={updateImg} timeout={1000} classNames="my-node"> */}
+          <img
+            src={require("./img_md/" +
+              project.folder +
+              "_md/" +
+              project.imagesArray[i].imgName +
+              "_md_" +
+              project.imagesArray[i].imgWidth +
+              ".jpg")}
+            alt=""
+            width={project.imagesArray[i].showWidth + "%"}
+            className={
+              project.imagesArray[i].display === "none" ? "img-clear" : ""
             }
-            classNames="my-node"
-          >
-            <img
-              src={require("./img_md/" +
-                project.folder +
-                "_md/" +
-                project.imagesArray[i].imgName +
-                "_md_" +
-                project.imagesArray[i].imgWidth +
-                ".jpg")}
-              alt=""
-              width={project.imagesArray[i].showWidth + "%"}
-              className={
-                project.imagesArray[i].display === "none" ? "img-clear" : ""
-              }
-            />
-          </CSSTransition>
+          />
+          {/* </CSSTransition> */}
         </a>
       );
     }
