@@ -10,33 +10,21 @@
   border-bottom: 1px solid var(--first-accent-color);
   border-top: 1px solid var(--first-accent-color);
 }
-.Project img.img-clear {
-  margin: 0;
-}
-.Project a {
-  transition: all 1s ease-out;
-}
-.Project a.d-none {
-  display: none;
-}
-.Project a.d-inline {
-  display: inline;
-}
 
 .Project .background-0 {
-  background: #08cad14e;
+  background: rgba(8, 202, 209, 25%);
 }
 .Project .background-1 {
-  background: #34969949;
+  background: rgba(52, 150, 153, 25%);
 }
 .Project .background-2 {
-  background: #05808441;
+  background: rgba(5, 127, 132, 25%);
 }
 .Project .background-3 {
-  background: #47ccd140;
+  background: rgba(71, 204, 209, 25%);
 }
 .Project .background-4 {
-  background: #034f5241;
+  background: rgba(3, 79, 82, 25%);
 }
 .Project .start {
   margin-left: 0.35%;
@@ -51,22 +39,4 @@
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
   border-right: 1px solid var(--first-accent-color);
-}
-
-.my-node-enter {
-  opacity: 0;
-  transform: scale(0.9);
-}
-.my-node-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300ms, transform 300ms;
-}
-.my-node-exit {
-  opacity: 1;
-}
-.my-node-exit-active {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
 }

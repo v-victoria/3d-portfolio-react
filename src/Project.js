@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OpenCloseButton from "./OpenCloseButton";
-// import { CSSTransition } from "react-transition-group";
+import "@animxyz/core";
+import { XyzTransition } from "@animxyz/react";
 import "./Project.css";
 
 export default function Project({
@@ -12,61 +13,51 @@ export default function Project({
   updateImg,
   backgroundIndex,
 }) {
-  const [images, setImages] = useState(null);
+  const [folder, setFolder] = useState(null);
 
   useEffect(() => {
-    let image = [];
-    for (let i = 0; i < project.imagesArray.length; i++) {
-      image[i] = (
-        <a
-          key={i}
-          href="/"
-          className={
-            project.imagesArray[i].display === "none" ? "d-none" : "d-inline"
-          }
-        >
-          {/* <CSSTransition in={updateImg} timeout={1000} classNames="my-node"> */}
-          <img
-            src={require("./img_md/" +
-              project.folder +
-              "_md/" +
-              project.imagesArray[i].imgName +
-              "_md_" +
-              project.imagesArray[i].imgWidth +
-              ".jpg")}
-            alt=""
-            width={project.imagesArray[i].showWidth + "%"}
-            className={
-              (project.imagesArray[i].display === "none" ? "img-clear" : "") +
-              (i === 0 ? " start" : "") +
-              (i ===
-              project.imagesArray.filter(function (img) {
-                return img.display === "inline";
-              }).length -
-                1
-                ? " end"
-                : "") +
-              " background-" +
-              backgroundIndex
-            }
-          />
-          {/* </CSSTransition> */}
-        </a>
-      );
-    }
-    setImages(image);
-  }, [
-    updateImg,
-    project.folder,
-    project.imagesArray,
-    project.openStatus,
-    backgroundIndex,
-  ]);
+    setFolder({
+      folderName: project.folder,
+      images: project.imagesArray,
+    });
+  }, [updateImg, project.folder, project.imagesArray]);
 
-  if (images) {
+  if (folder) {
     return (
       <span className={"Project folder-" + project.folder}>
-        {images}
+        {folder.images.map((img, index) => {
+          let toggle = img.display === "inline" ? true : false;
+          let src = require("./img_md/" +
+            folder.folderName +
+            "_md/" +
+            img.imgName +
+            "_md_" +
+            img.imgWidth +
+            ".jpg");
+
+          let classNames =
+            (index === 0 ? " start" : "") +
+            (index ===
+            folder.images.filter(function (img) {
+              return img.display === "inline";
+            }).length -
+              1
+              ? " end"
+              : "") +
+            " background-" +
+            backgroundIndex;
+
+          let newWidth = img.showWidth + "%";
+
+          return (
+            <XyzTransition appear xyz="fade left back" key={index}>
+              {toggle && (
+                <img src={src} alt="" width={newWidth} className={classNames} />
+              )}
+            </XyzTransition>
+          );
+        })}
+
         <OpenCloseButton
           project={project}
           tempImgList={tempImgList}
