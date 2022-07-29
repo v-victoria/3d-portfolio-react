@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>My name is Victoria Martynenko</h1>
+        <h1>
+          My name is <span className="name">Victoria</span>
+        </h1>
         <h2>
           I am a 3D Artist in the direction of Architectural Visualisation
         </h2>

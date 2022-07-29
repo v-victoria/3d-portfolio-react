@@ -1,7 +1,14 @@
-.Project span {
-}
 .Project img {
-  margin: 0.5% 1%;
+  margin-top: 0.25%;
+  margin-bottom: 0.25%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-bottom: 1px solid var(--first-accent-color);
+  border-top: 1px solid var(--first-accent-color);
 }
 .Project img.img-clear {
   margin: 0;
@@ -14,6 +21,36 @@
 }
 .Project a.d-inline {
   display: inline;
+}
+
+.Project .background-0 {
+  background: #08cad14e;
+}
+.Project .background-1 {
+  background: #34969949;
+}
+.Project .background-2 {
+  background: #05808441;
+}
+.Project .background-3 {
+  background: #47ccd140;
+}
+.Project .background-4 {
+  background: #034f5241;
+}
+.Project .start {
+  margin-left: 0.35%;
+  padding-left: 0.5%;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  border-left: 1px solid var(--first-accent-color);
+}
+.Project .end {
+  margin-right: 0.35%;
+  padding-right: 0.5%;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  border-right: 1px solid var(--first-accent-color);
 }
 
 .my-node-enter {

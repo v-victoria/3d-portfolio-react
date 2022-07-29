@@ -10,6 +10,7 @@ export default function Project({
   listChange,
   setListChange,
   updateImg,
+  backgroundIndex,
 }) {
   const [images, setImages] = useState(null);
 
@@ -36,7 +37,17 @@ export default function Project({
             alt=""
             width={project.imagesArray[i].showWidth + "%"}
             className={
-              project.imagesArray[i].display === "none" ? "img-clear" : ""
+              (project.imagesArray[i].display === "none" ? "img-clear" : "") +
+              (i === 0 ? " start" : "") +
+              (i ===
+              project.imagesArray.filter(function (img) {
+                return img.display === "inline";
+              }).length -
+                1
+                ? " end"
+                : "") +
+              " background-" +
+              backgroundIndex
             }
           />
           {/* </CSSTransition> */}
@@ -44,7 +55,13 @@ export default function Project({
       );
     }
     setImages(image);
-  }, [updateImg, project.folder, project.imagesArray, project.openStatus]);
+  }, [
+    updateImg,
+    project.folder,
+    project.imagesArray,
+    project.openStatus,
+    backgroundIndex,
+  ]);
 
   if (images) {
     return (

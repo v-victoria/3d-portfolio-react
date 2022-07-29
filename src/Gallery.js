@@ -26,6 +26,11 @@ export default function Gallery() {
     }
   }, [tempImgList, listChange]);
 
+  function getBackgroundIndex(index) {
+    let backgroundIndex = Math.round((index / 5 - Math.trunc(index / 5)) / 0.2);
+    return backgroundIndex;
+  }
+
   if (updatedImages) {
     return (
       <div className="Gallery">
@@ -39,6 +44,7 @@ export default function Gallery() {
               listChange={listChange}
               setListChange={setListChange}
               updateImg={updateImg}
+              backgroundIndex={getBackgroundIndex(index)}
             />
           );
         })}

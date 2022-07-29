@@ -2,4 +2,20 @@ button.OpenCloseButton {
   position: absolute;
   margin-left: -45px;
   margin-top: 20px;
+  background: var(--first-accent-color);
+  border: none;
+  width: 45px;
+  height: 25px;
+  color: white;
+  font-weight: 800;
+  text-align: start;
+  padding-left: 0.5%;
+  border-radius: 4px;
+  transition: all 150ms ease-in-out;
+}
+button.OpenCloseButton:hover {
+  background: var(--theme-background);
+  color: var(--first-accent-color);
+  border: 1px solid var(--first-accent-color);
+  cursor: pointer;
 }
