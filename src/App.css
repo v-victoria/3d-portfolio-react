@@ -1,11 +1,9 @@
-.App {
-  text-align: center;
-}
 .App h1,
 .App h2 {
   margin: 0;
   background: var(--main-text-color);
   color: var(--theme-background);
+  text-align: center;
 }
 .App h1 {
   padding: 30px 30px 25px;
@@ -24,12 +22,14 @@
 .App h3 {
   font-size: 32px;
   padding: 35px 25px 0;
+  text-align: center;
 }
 .App footer {
   padding: 20px 30px 30px;
   font-size: 14px;
   background: var(--first-accent-color);
   color: var(--theme-background);
+  text-align: center;
 }
 .App footer a {
   color: var(--second-accent-color);

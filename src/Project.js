@@ -50,9 +50,21 @@ export default function Project({
           let newWidth = img.showWidth + "%";
 
           return (
-            <XyzTransition appear xyz="fade left back" key={index}>
+            <XyzTransition
+              appear
+              xyz="fade left back"
+              key={index}
+              duration={{ appear: "auto", in: 300, out: 0 }}
+            >
               {toggle && (
-                <img src={src} alt="" width={newWidth} className={classNames} />
+                <a href="/">
+                  <img
+                    src={src}
+                    alt=""
+                    width={newWidth}
+                    className={classNames}
+                  />
+                </a>
               )}
             </XyzTransition>
           );

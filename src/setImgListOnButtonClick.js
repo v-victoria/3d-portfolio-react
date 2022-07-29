@@ -16,11 +16,7 @@ export function setImgListOnButtonClick(
 
         if (i === 1) {
           images[projectIndex].openStatus = false;
-          setRunTimer(false);
-        } else {
-          setRunTimer(true);
         }
-        i = 0;
       }
     }
   } else {
