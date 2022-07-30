@@ -1,6 +1,6 @@
 export function importAllImg(list) {
   let images = null;
-  list.keys().map((img) => {
+  list.keys().map((img, index) => {
     let folder = img.slice(2, 4);
     let imgName = img.slice(8, 13);
     let pathBeforeWidth = img.slice(0, 17);
@@ -10,52 +10,33 @@ export function importAllImg(list) {
 
     if (images === null) {
       images = [];
-      let array = [];
-      array[0] = {
+      images[index] = {
+        folder: folder,
+        openStatus: true,
         imgName: imgName,
         imgWidth: imgWidth,
         showWidth: 0,
         display: "inline",
       };
-      let image = {
-        folder: folder,
-        openStatus: true,
-        imagesArray: array,
-      };
-      images[0] = image;
     } else {
       let display = "none";
       let openStatus = false;
 
-      if (images.length < 3) {
+      if (images[index - 1].folder !== folder) {
         display = "inline";
       }
-      if (images.length === 1) {
+      if (folder === "01" || folder === "02") {
         openStatus = true;
+        display = "inline";
       }
-      if (images[images.length - 1].folder === folder) {
-        let imagesArray = images[images.length - 1].imagesArray;
-        imagesArray[imagesArray.length] = {
-          imgName: imgName,
-          imgWidth: imgWidth,
-          showWidth: 0,
-          display: imagesArray.length === 0 ? "inline" : display,
-        };
-      } else {
-        let array = [];
-        array[0] = {
-          imgName: imgName,
-          imgWidth: imgWidth,
-          showWidth: 0,
-          display: "inline",
-        };
-        let image = {
-          folder: folder,
-          openStatus: openStatus,
-          imagesArray: array,
-        };
-        images[images.length] = image;
-      }
+      images[images.length] = {
+        folder: folder,
+        openStatus: openStatus,
+        imgName: imgName,
+        imgWidth: imgWidth,
+        showWidth: 0,
+        display: display,
+      };
     }
 
     return true;

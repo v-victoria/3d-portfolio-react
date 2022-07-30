@@ -1,5 +1,4 @@
 button.OpenCloseButton {
-  position: absolute;
   margin-left: -45px;
   margin-top: 20px;
   background: var(--first-accent-color);
@@ -12,10 +11,15 @@ button.OpenCloseButton {
   padding-left: 8px;
   border-radius: 4px;
   transition: all 150ms ease-in-out;
+  left: 14px;
+  position: relative;
 }
 button.OpenCloseButton:hover {
   background: var(--theme-background);
   color: var(--first-accent-color);
   border: 1px solid var(--first-accent-color);
   cursor: pointer;
+}
+button .none {
+  display: none;
 }

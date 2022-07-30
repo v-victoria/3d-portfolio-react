@@ -3,8 +3,9 @@ import { setImgListOnButtonClick } from "./setImgListOnButtonClick";
 import "./OpenCloseButton.css";
 
 export default function OpenCloseButton({
+  display,
   project,
-  tempImgList,
+  images,
   setTempImgList,
   setListChange,
 }) {
@@ -16,21 +17,14 @@ export default function OpenCloseButton({
   useEffect(() => {
     if (projectIndex !== null) {
       setImgListOnButtonClick(
-        tempImgList,
+        images,
         setTempImgList,
         setListChange,
         projectIndex,
         setRunTimer
       );
     }
-  }, [
-    time,
-    btnClick,
-    projectIndex,
-    setListChange,
-    setTempImgList,
-    tempImgList,
-  ]);
+  }, [time, btnClick, projectIndex, setListChange, setTempImgList, images]);
 
   useEffect(() => {
     if (runTimer) {
@@ -43,29 +37,34 @@ export default function OpenCloseButton({
 
   function getFolderName(event) {
     let folder = event.target.id;
-
-    tempImgList.map((tempListProject, i) => {
-      if (tempListProject.folder === folder) {
-        setBtnClick((prevState) => !prevState);
-        setProjectIndex(i);
+    console.log(folder);
+    let imgArray = [];
+    images.map((img, i) => {
+      if (img.folder === folder) {
+        imgArray[imgArray.length] = i;
       }
       return true;
     });
+    if (imgArray !== []) {
+      console.log(imgArray);
+      setBtnClick((prevState) => !prevState);
+      setProjectIndex(imgArray);
+    }
   }
 
-  if (project.imagesArray.length > 1) {
+  if (project.length > 1) {
     return (
       <button
-        className="OpenCloseButton"
-        id={project.folder}
+        className={"OpenCloseButton" + display}
+        id={project[0].folder}
         onClick={getFolderName}
       >
-        {project.openStatus ? "-" : "+"}
-        {project.imagesArray.filter(function (img) {
-          return project.openStatus
+        {project[0].openStatus ? "-" : "+"}
+        {project.filter(function (img) {
+          return project[0].openStatus
             ? img.display === "inline"
             : img.display === "none";
-        }).length - (project.openStatus ? 1 : 0)}
+        }).length - (project[0].openStatus ? 1 : 0)}
       </button>
     );
   } else {

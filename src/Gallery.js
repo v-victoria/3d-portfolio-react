@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { saveShowWidth } from "./saveShowWidth";
 import { importAllImg } from "./importAllImg";
 import { updateImgWidth } from "./updateImgWidth";
-import Project from "./Project";
-import "./Gallery.css";
+import Images from "./Images";
 
 export default function Gallery() {
   const [updatedImages, setUpdatedImages] = useState(null);
@@ -12,42 +11,32 @@ export default function Gallery() {
   const [updateImg, setUpdateImg] = useState(false);
 
   useEffect(() => {
-    let rows = [];
-    let images = tempImgList;
+    console.log("useEffect Gallery");
 
-    if (!images) {
-      images = importAllImg(require.context("./img_md", true, /\./));
-      setTempImgList(images);
+    let rows = [];
+    let tempImages = tempImgList;
+
+    if (!tempImages) {
+      tempImages = importAllImg(require.context("./img_md", true, /\./));
+      setTempImgList(tempImages);
     } else {
-      rows = updateImgWidth(images);
-      images = saveShowWidth(rows, images);
-      setUpdatedImages(images);
+      rows = updateImgWidth(tempImages);
+      tempImages = saveShowWidth(rows, tempImages);
+      console.log("Images", tempImages);
+      setUpdatedImages(tempImages);
       setUpdateImg((prevState) => !prevState);
     }
   }, [tempImgList, listChange]);
 
-  function getBackgroundIndex(index) {
-    let backgroundIndex = Math.round((index / 5 - Math.trunc(index / 5)) / 0.2);
-    return backgroundIndex;
-  }
-
   if (updatedImages) {
     return (
       <div className="Gallery">
-        {updatedImages.map((project, index) => {
-          return (
-            <Project
-              key={index}
-              project={project}
-              tempImgList={tempImgList}
-              setTempImgList={setTempImgList}
-              listChange={listChange}
-              setListChange={setListChange}
-              updateImg={updateImg}
-              backgroundIndex={getBackgroundIndex(index)}
-            />
-          );
-        })}
+        <Images
+          updatedImages={updatedImages}
+          setTempImgList={setTempImgList}
+          setListChange={setListChange}
+          updateImg={updateImg}
+        />
       </div>
     );
   } else {

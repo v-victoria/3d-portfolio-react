@@ -1,41 +1,49 @@
 export function setImgListOnButtonClick(
-  tempImgList,
+  images,
   setTempImgList,
   setListChange,
   projectIndex,
   setRunTimer
 ) {
-  let images = tempImgList;
-  let imagesArray = images[projectIndex].imagesArray;
+  let tempImages = images;
 
-  if (images[projectIndex].openStatus) {
-    for (let i = imagesArray.length - 1; i > 0; i--) {
-      if (imagesArray[i].display === "inline") {
-        imagesArray[i].display = "none";
-        images[projectIndex].imagesArray = imagesArray;
-
-        if (i === 1) {
-          images[projectIndex].openStatus = false;
-        }
+  if (tempImages[projectIndex[0]].openStatus) {
+    for (
+      let i = projectIndex[1];
+      i <= projectIndex[projectIndex.length - 1];
+      i++
+    ) {
+      if (tempImages[i].display === "inline") {
+        tempImages[i].display = "none";
+        tempImages[i].openStatus = false;
+      }
+      if (i === projectIndex[projectIndex.length - 1]) {
+        tempImages[projectIndex[0]].openStatus = false;
       }
     }
   } else {
-    for (let i = 1; i < imagesArray.length; i++) {
-      if (imagesArray[i].display === "none") {
-        imagesArray[i].display = "inline";
-        images[projectIndex].imagesArray = imagesArray;
+    for (
+      let i = projectIndex[1];
+      i <= projectIndex[projectIndex.length - 1];
+      i++
+    ) {
+      if (tempImages[i].display === "none") {
+        tempImages[i].display = "inline";
+        tempImages[i].openStatus = true;
 
-        if (i === imagesArray.length - 1) {
-          images[projectIndex].openStatus = true;
+        if (i === projectIndex[projectIndex.length - 1]) {
+          tempImages[projectIndex[0]].openStatus = true;
+          console.log("setRunTimer(false)");
           setRunTimer(false);
         } else {
+          console.log("setRunTimer(true)");
           setRunTimer(true);
         }
-        i = imagesArray.length;
+        i = projectIndex[projectIndex.length - 1] + 1;
       }
     }
   }
-
-  setTempImgList(images);
+  console.log(tempImages);
+  setTempImgList(tempImages);
   setListChange((prevState) => !prevState);
 }
