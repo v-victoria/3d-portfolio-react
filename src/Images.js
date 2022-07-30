@@ -81,11 +81,13 @@ export default function Images({
                 : ""
               : " none";
 
+          let smNone = image.imgWidth < 500 ? " sm-none" : "";
+
           return (
             <div
               key={index}
               style={{ width: newWidth + "%" }}
-              className={classNames + " container"}
+              className={classNames + " container" + smNone}
             >
               <div className="img-container">
                 <a href="/">

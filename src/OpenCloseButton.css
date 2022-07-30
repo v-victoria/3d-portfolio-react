@@ -23,3 +23,24 @@ button.OpenCloseButton:hover {
 button .none {
   display: none;
 }
+
+@media (max-width: 1300px) {
+  button.OpenCloseButton {
+    left: 10px;
+  }
+}
+@media (max-width: 900px) {
+  button.OpenCloseButton {
+    position: static;
+    height: 45px;
+  }
+}
+@media (max-width: 750px) {
+  button.OpenCloseButton {
+    position: relative;
+    text-align: center;
+    font-size: 14px;
+    align-self: flex-end;
+    height: 90px;
+  }
+}

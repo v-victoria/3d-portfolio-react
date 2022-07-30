@@ -70,7 +70,7 @@ div.Images {
   transition: all 0.4s ease;
 }
 .Images i:hover {
-  color: rgba(19, 41, 61, 90%);
+  color: var(--first-accent-color);
 }
 
 .Images .background-0 {
@@ -104,4 +104,53 @@ div.Images {
 }
 .Images .none {
   display: none;
+}
+
+@media (max-width: 750px) {
+  div.Images {
+    display: flex;
+    flex-direction: column;
+  }
+  .Images div.container {
+    width: 98% !important;
+  }
+  .Images div.container {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    border-bottom: 0px solid;
+    border-top: 0px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-color: var(--first-accent-color);
+  }
+
+  .Images .start {
+    margin-top: 3px !important;
+    padding-top: 6px !important;
+    border-top-right-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+
+    border-top: 1px solid var(--first-accent-color) !important;
+  }
+  .Images .end {
+    margin-bottom: 20px !important;
+    padding-bottom: 6px !important;
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+
+    border-bottom: 1px solid var(--first-accent-color) !important;
+  }
+  .Images .cover,
+  .Images a,
+  .Images .sm-none {
+    display: none;
+  }
 }
