@@ -69,10 +69,6 @@ export default function Images({
             start + end + none + " background-" + getBackgroundIndex(index);
 
           let newWidth = image.showWidth;
-          // let magnifyingGlassML =
-          //   (window.innerWidth * 0.9 * (newWidth + 0.85)) / 100;
-          // let magnifyingGlassMT =
-          //   (window.innerWidth * 0.9 * newWidth * 8) / image.imgWidth / 2 - 36;
 
           let button =
             image.display === "inline"
@@ -89,24 +85,19 @@ export default function Images({
             <div
               key={index}
               style={{ width: newWidth + "%" }}
-              className={classNames + " img-container"}
+              className={classNames + " container"}
             >
-              <div>
-                {/* <a href="/">
-              //   <i
-              //     className="fa-solid fa-magnifying-glass-plus"
-              //     style={{
-              //       // marginLeft: "-" + magnifyingGlassML + "px",
-              //       marginTop: magnifyingGlassMT + "px",
-              //     }}
-              //   ></i>
-              // </a> */}
+              <div className="img-container">
+                <a href="/">
+                  <i className="fa-solid fa-magnifying-glass-plus"></i>
+                </a>
+                <div className="cover"></div>
                 <XyzTransition
                   appear
                   xyz="fade left back"
                   duration={{ appear: "auto", in: 300, out: 0 }}
                 >
-                  {toggle && <img src={src} alt="" />}
+                  {toggle && <img src={src} alt=""></img>}
                 </XyzTransition>
                 <OpenCloseButton
                   display={button}

@@ -5,7 +5,7 @@ div.Images {
   display: flex;
   flex-wrap: wrap;
 }
-.Images div.img-container {
+.Images div.container {
   margin-top: 0.25%;
   margin-bottom: 0.25%;
   margin-left: 0;
@@ -18,20 +18,61 @@ div.Images {
   border-top: 1px solid;
   border-color: var(--first-accent-color);
 }
-.Images .img-container div {
+.Images .img-container {
+  position: relative;
   display: flex;
+  justify-content: center;
 }
+.Images .cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.Images .cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 127, 132, 0%);
+  transition: all 0.4s ease;
+  z-index: 0;
+  clip-path: circle(40px at 50% 50%);
+}
+.Images .cover:hover:before {
+  background: rgba(19, 41, 61, 30%);
+}
+
 .Images a {
   position: absolute;
+  align-self: center;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.Images a:hover + .cover::before {
+  clip-path: circle(100% at 50% 50%);
+  background: rgba(255, 255, 255, 30%);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.Images .img-container:hover a {
+  z-index: 1;
+  opacity: 1;
 }
 
 .Images i {
   font-size: 36px;
-  background: rgba(255, 255, 255, 0.501);
-  color: white;
-  padding: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 22px;
   border-radius: 50%;
+  transition: all 0.4s ease;
 }
+.Images i:hover {
+  color: rgba(19, 41, 61, 90%);
+}
+
 .Images .background-0 {
   background: rgba(8, 202, 209, 25%);
 }
