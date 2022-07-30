@@ -38,3 +38,26 @@
   width: 90%;
   margin: 50px auto;
 }
+
+@media (max-width: 750px) {
+  .App h1 {
+    padding: 25px 30px 12px;
+    font-size: 24px;
+  }
+  .App h1 .name {
+    font-size: 22px;
+  }
+  .App h2 {
+    font-size: 14px;
+
+    padding: 0 14px 14px;
+    border-bottom: 8px solid var(--first-accent-color);
+  }
+  .App h3 {
+    font-size: 26px;
+    padding: 20px 25px 0;
+  }
+  .App footer {
+    font-size: 12px;
+  }
+}
