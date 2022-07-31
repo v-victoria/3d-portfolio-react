@@ -165,7 +165,8 @@ div.Images {
 
     border-bottom: 1px solid var(--first-accent-color) !important;
   }
-  .Images .cover,
+  .Images .cover-top,
+  .Images .cover-bottom,
   .Images a,
   .Images .sm-none {
     display: none;
