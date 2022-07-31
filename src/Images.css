@@ -1,5 +1,6 @@
 .Images img {
   width: 100%;
+  transition: all 0.4s ease;
 }
 div.Images {
   display: flex;
@@ -23,24 +24,26 @@ div.Images {
   display: flex;
   justify-content: center;
 }
-.Images .cover {
+.Images .cover-top,
+.Images.cover-bottom {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.Images .cover::before {
+.Images .cover-top::before,
+.Images .cover-bottom::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5, 127, 132, 0%);
+  background: rgba(255, 255, 255, 0%);
   transition: all 0.4s ease;
-  z-index: 0;
+  z-index: 1;
   clip-path: circle(40px at 50% 50%);
 }
-.Images .cover:hover:before {
+.Images .cover-top:hover ~ .cover-bottom::before {
   background: rgba(19, 41, 61, 30%);
 }
 
@@ -48,18 +51,32 @@ div.Images {
   position: absolute;
   align-self: center;
   opacity: 0;
-  transition: all 0.4s;
+  transition: all 0.4s ease;
 }
 
-.Images a:hover + .cover::before {
-  clip-path: circle(100% at 50% 50%);
-  background: rgba(255, 255, 255, 30%);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-}
-
-.Images .img-container:hover a {
-  z-index: 1;
+.Images a:hover {
+  z-index: 2;
   opacity: 1;
+}
+
+.Images a:hover + .cover-bottom::before {
+  transform: scale(1.015);
+  clip-path: circle(100% at 50% 50%);
+  z-index: 1;
+  background: rgba(255, 255, 255, 20%);
+
+  box-sizing: border-box;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.25);
+}
+
+.Images .cover-top:hover + a {
+  z-index: 2;
+  opacity: 1;
+}
+.Images a:hover ~ img {
+  transform: scale(1.015);
+  z-index: 0;
 }
 
 .Images i {
@@ -70,7 +87,8 @@ div.Images {
   transition: all 0.4s ease;
 }
 .Images i:hover {
-  color: var(--first-accent-color);
+  transform: scale(1.5);
+  color: rgba(255, 255, 255, 1);
 }
 
 .Images .background-0 {
@@ -112,7 +130,7 @@ div.Images {
     flex-direction: column;
   }
   .Images div.container {
-    width: 98% !important;
+    width: 97% !important;
   }
   .Images div.container {
     margin-top: 0;

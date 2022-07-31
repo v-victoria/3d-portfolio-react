@@ -13,6 +13,7 @@ button.OpenCloseButton {
   transition: all 150ms ease-in-out;
   left: 14px;
   position: relative;
+  z-index: 3;
 }
 button.OpenCloseButton:hover {
   background: var(--theme-background);

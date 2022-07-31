@@ -90,10 +90,11 @@ export default function Images({
               className={classNames + " container" + smNone}
             >
               <div className="img-container">
+                <div className="cover-top"></div>
                 <a href="/">
                   <i className="fa-solid fa-magnifying-glass-plus"></i>
                 </a>
-                <div className="cover"></div>
+                <div className="cover-bottom"></div>
                 <XyzTransition
                   appear
                   xyz="fade left back"
