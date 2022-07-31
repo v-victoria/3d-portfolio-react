@@ -3,6 +3,7 @@ import OpenCloseButton from "./OpenCloseButton";
 import "@animxyz/core";
 import { XyzTransition } from "@animxyz/react";
 import "./Images.css";
+import ProjectFullScreen from "./ProjectFullScreen";
 
 export default function Images({
   updatedImages,
@@ -11,14 +12,13 @@ export default function Images({
   updateImg,
 }) {
   const [images, setImages] = useState(null);
+  const [showProject, setShowProject] = useState(false);
+  const [project, setProject] = useState(null);
+  const [imgInFolderIndex, setImgInFolderIndex] = useState(null);
 
   useEffect(() => {
-    console.log("useEffect Images");
-
     setImages(updatedImages);
   }, [updateImg, updatedImages]);
-
-  console.log(images);
 
   function getBackgroundIndex(index) {
     let folder = parseInt(images[index].folder);
@@ -34,53 +34,92 @@ export default function Images({
     });
     return project;
   }
+
+  function getToggle(image) {
+    return image.display === "inline" ? true : false;
+  }
+
+  function getSrc(image) {
+    return require("./img_md/" +
+      image.folder +
+      "_md/" +
+      image.imgName +
+      "_md_" +
+      image.imgWidth +
+      ".jpg");
+  }
+
+  function getStart(index) {
+    return index === 0
+      ? " start"
+      : images[index].folder !== images[index - 1].folder
+      ? " start"
+      : "";
+  }
+
+  function getEnd(image, index) {
+    return images.length - 1 !== index
+      ? image.display === "inline"
+        ? images[index + 1].display === "none"
+          ? " end"
+          : images[index].folder !== images[index + 1].folder
+          ? " end"
+          : ""
+        : ""
+      : " end";
+  }
+
+  function getButtonClassName(image, index) {
+    return image.display === "inline"
+      ? images.length - 1 !== index
+        ? image.folder !== images[index + 1].folder
+          ? ""
+          : images[index + 1].display === "none"
+          ? ""
+          : " none"
+        : ""
+      : " none";
+  }
+
+  function getImgInFolderIndex(imgList, imgName) {
+    let imgIndex = 0;
+    for (let i = 0; i < imgList.length; i++) {
+      if (imgList[i].imgName === imgName) {
+        imgIndex = i;
+      }
+    }
+    return imgIndex;
+  }
+
+  function getId(event) {
+    event.preventDefault();
+    let imgIndex = event.target.id;
+    let imgList = getFolderImages(images[imgIndex].folder);
+    setProject(imgList);
+    setImgInFolderIndex(getImgInFolderIndex(imgList, images[imgIndex].imgName));
+    setShowProject(true);
+  }
+
   if (images) {
     return (
       <div className="Images">
+        {showProject ? (
+          <ProjectFullScreen
+            project={project}
+            imgIndex={imgInFolderIndex}
+            setShowProject={setShowProject}
+          />
+        ) : null}
         {images.map((image, index) => {
-          let toggle = image.display === "inline" ? true : false;
-          let src = require("./img_md/" +
-            image.folder +
-            "_md/" +
-            image.imgName +
-            "_md_" +
-            image.imgWidth +
-            ".jpg");
-
-          let end =
-            images.length - 1 !== index
-              ? image.display === "inline"
-                ? images[index + 1].display === "none"
-                  ? " end"
-                  : images[index].folder !== images[index + 1].folder
-                  ? " end"
-                  : ""
-                : ""
-              : " end";
-          let start =
-            index === 0
-              ? " start"
-              : images[index].folder !== images[index - 1].folder
-              ? " start"
-              : "";
+          let toggle = getToggle(image);
+          let src = getSrc(image);
+          let end = getEnd(image, index);
+          let start = getStart(index);
           let none = image.display === "none" ? " none" : "";
-
           let classNames =
             start + end + none + " background-" + getBackgroundIndex(index);
-
           let newWidth = image.showWidth;
-
-          let button =
-            image.display === "inline"
-              ? images.length - 1 !== index
-                ? image.folder !== images[index + 1].folder
-                  ? ""
-                  : images[index + 1].display === "none"
-                  ? ""
-                  : " none"
-                : ""
-              : " none";
-
+          let button = getButtonClassName(image, index);
           let smNone = image.imgWidth < 500 ? " sm-none" : "";
 
           return (
@@ -91,8 +130,11 @@ export default function Images({
             >
               <div className="img-container">
                 <div className="cover-top"></div>
-                <a href="/">
-                  <i className="fa-solid fa-magnifying-glass-plus"></i>
+                <a href="/" id={index} onClick={getId}>
+                  <i
+                    className="fa-solid fa-magnifying-glass-plus"
+                    id={index}
+                  ></i>
                 </a>
                 <div className="cover-bottom"></div>
                 <XyzTransition

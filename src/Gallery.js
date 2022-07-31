@@ -11,8 +11,6 @@ export default function Gallery() {
   const [updateImg, setUpdateImg] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect Gallery");
-
     let rows = [];
     let tempImages = tempImgList;
 
@@ -22,7 +20,6 @@ export default function Gallery() {
     } else {
       rows = updateImgWidth(tempImages);
       tempImages = saveShowWidth(rows, tempImages);
-      console.log("Images", tempImages);
       setUpdatedImages(tempImages);
       setUpdateImg((prevState) => !prevState);
     }

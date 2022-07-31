@@ -64,7 +64,6 @@ div.Images {
   clip-path: circle(100% at 50% 50%);
   z-index: 1;
   background: rgba(255, 255, 255, 20%);
-
   box-sizing: border-box;
   border: 2px solid rgb(255, 255, 255);
   box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.25);
