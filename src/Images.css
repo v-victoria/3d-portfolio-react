@@ -75,7 +75,7 @@ div.Images {
   opacity: 1;
 }
 .Images a:hover ~ img {
-  transform: scale(1.015);
+  transform: scale(1.013);
   z-index: 0;
 }
 

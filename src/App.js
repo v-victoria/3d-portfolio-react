@@ -18,8 +18,21 @@ function App() {
       <footer>
         <div>
           © 2022. This website was designed and coded by{" "}
-          <a href="/">Victoria Martynenko</a>, and it is{" "}
-          <a href="/">open-sourced</a>
+          <a
+            href="https://victoria-martynenko.dev/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Victoria Martynenko
+          </a>
+          , and it is{" "}
+          <a
+            href="https://github.com/v-victoria/3d-portfolio-react"
+            target="_blank"
+            rel="noreferrer"
+          >
+            open-sourced
+          </a>
         </div>
       </footer>
     </div>
