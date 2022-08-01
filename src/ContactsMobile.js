@@ -25,14 +25,20 @@ export default function ContactsMobile() {
           target="_blank"
           rel="noreferrer"
         >
-          <i className="fa-brands fa-square-behance"></i>
+          <img
+            src={require("./svg/behance-white.svg").default}
+            alt="CV download icon"
+          />
         </a>
         <a
           href="https://linkedin.com/in/victoria-martynenko"
           target="_blank"
           rel="noreferrer"
         >
-          <i className="fa-brands fa-linkedin"></i>
+          <img
+            src={require("./svg/linkedin-white.svg").default}
+            alt="CV download icon"
+          />
         </a>
       </div>
     </div>

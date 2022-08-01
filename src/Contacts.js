@@ -51,7 +51,8 @@ export default function Contacts() {
       });
   }
 
-  function handleShowEmail() {
+  function handleShowEmail(event) {
+    event.preventDefault();
     setShowEmail(!showEmail);
   }
 
@@ -80,17 +81,22 @@ export default function Contacts() {
                 </div>
               )}
             </XyzTransition>
-            <i
-              className="fa-solid fa-square-envelope"
-              onClick={handleShowEmail}
-            ></i>
+            <a href="/" onClick={handleShowEmail}>
+              <img
+                src={require("./svg/envelope.svg").default}
+                alt="CV download icon"
+              />
+            </a>
           </div>
           <a
             href="https://www.behance.net/3dmvv"
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fa-brands fa-square-behance"></i>
+            <img
+              src={require("./svg/behance.svg").default}
+              alt="CV download icon"
+            />
           </a>
 
           <a
@@ -98,7 +104,10 @@ export default function Contacts() {
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fa-brands fa-linkedin"></i>
+            <img
+              src={require("./svg/linkedin.svg").default}
+              alt="CV download icon"
+            />
           </a>
           <a
             href={require("./CV.pdf")}

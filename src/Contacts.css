@@ -34,22 +34,14 @@
   font-size: 24px;
   padding-left: 8px;
   align-self: center;
+  color: var(--main-text-color);
 }
-.Contacts i.fa-square-envelope {
-  background: var(--theme-background);
+.Contacts a {
   z-index: 1;
 }
 .Contacts img {
-  width: 49px;
-  margin: 0.2vw 0;
-}
-.Contacts i {
-  color: var(--main-text-color);
-  font-size: 56px;
-}
-
-.Contacts a {
-  margin: 3px 0;
+  width: 50px;
+  margin: 2px 0;
 }
 
 @media (max-width: 1150px) {
@@ -66,10 +58,7 @@
     font-size: 16px;
   }
   .Contacts img {
-    width: 37px;
-  }
-  .Contacts i {
-    font-size: 42px;
+    width: 36px;
   }
 }
 @media (max-width: 750px) {
