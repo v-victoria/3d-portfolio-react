@@ -27,7 +27,7 @@ export default function ContactsMobile() {
         >
           <img
             src={require("./svg/behance-white.svg").default}
-            alt="CV download icon"
+            alt="Behance icon"
           />
         </a>
         <a
@@ -37,7 +37,7 @@ export default function ContactsMobile() {
         >
           <img
             src={require("./svg/linkedin-white.svg").default}
-            alt="CV download icon"
+            alt="LinkedIn icon"
           />
         </a>
       </div>
