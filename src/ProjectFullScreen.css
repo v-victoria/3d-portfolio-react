@@ -54,7 +54,7 @@
 }
 .ProjectFullScreen .image-container,
 .ProjectFullScreen img {
-  max-height: 85vh;
+  max-height: 80vh;
   max-width: 85vw;
   object-fit: contain;
   width: auto;

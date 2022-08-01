@@ -1,0 +1,79 @@
+.Contacts {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px 130px;
+  text-align: end;
+}
+.Contacts .email-container {
+  display: flex;
+}
+.Contacts .email-container i:hover {
+  cursor: pointer;
+}
+.Contacts .email-copy {
+  display: flex;
+  backdrop-filter: blur(15px);
+  background: rgba(5, 127, 132, 25%);
+  border: 1px solid var(--first-accent-color);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  height: 36px;
+  align-self: center;
+  z-index: 0;
+}
+.Contacts .email-copy span {
+  padding: 0 12px;
+  align-self: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+.Contacts .email-copy i {
+  font-size: 24px;
+  padding-left: 8px;
+  align-self: center;
+}
+.Contacts i.fa-square-envelope {
+  background: var(--theme-background);
+  z-index: 1;
+}
+.Contacts img {
+  width: 49px;
+  margin: 0.2vw 0;
+}
+.Contacts i {
+  color: var(--main-text-color);
+  font-size: 56px;
+}
+
+.Contacts a {
+  margin: 3px 0;
+}
+
+@media (max-width: 1150px) {
+  .Contacts {
+    margin: 0 0 130px;
+  }
+  .Contacts .email-copy {
+    height: 26px;
+  }
+  .Contacts .email-copy span {
+    font-size: 12px;
+  }
+  .Contacts .email-copy i {
+    font-size: 16px;
+  }
+  .Contacts img {
+    width: 37px;
+  }
+  .Contacts i {
+    font-size: 42px;
+  }
+}
+@media (max-width: 750px) {
+  .Contacts {
+    display: none;
+  }
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import Gallery from "./Gallery";
+import Contacts from "./Contacts";
+import ContactsMobile from "./ContactsMobile";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
         <h3>My Portfolio</h3>
       </header>
       <Gallery />
-      <footer>
+      <footer className="footer">
+        <Contacts />
+        <ContactsMobile />
         <div>
           © 2022. This website was designed and coded by{" "}
           <a
