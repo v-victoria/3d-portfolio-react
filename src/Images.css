@@ -1,7 +1,7 @@
 .Images img {
   width: 100%;
-  transition: all 0.4s ease;
 }
+
 div.Images {
   display: flex;
   flex-wrap: wrap;
@@ -39,7 +39,7 @@ div.Images {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0%);
-  transition: all 0.4s ease;
+  transition: clip-path 0.4s ease;
   z-index: 1;
   clip-path: circle(40px at 50% 50%);
 }

@@ -138,7 +138,7 @@ export default function Images({
                 </a>
                 <div className="cover-bottom"></div>
                 <XyzTransition
-                  appear
+                  appear={false}
                   xyz="fade left back"
                   duration={{ appear: "auto", in: 300, out: 0 }}
                 >
