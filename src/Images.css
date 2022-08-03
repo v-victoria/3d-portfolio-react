@@ -59,21 +59,9 @@ div.Images {
   opacity: 1;
 }
 
-.Images a:hover + .cover-bottom::before {
-  clip-path: circle(100% at 50% 50%);
-  z-index: 1;
-  background: rgba(255, 255, 255, 20%);
-  box-sizing: border-box;
-  border: 2px solid rgb(255, 255, 255);
-  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.25);
-}
-
 .Images .cover-top:hover + a {
   z-index: 2;
   opacity: 1;
-}
-.Images a:hover ~ img {
-  z-index: 0;
 }
 
 .Images i {
@@ -82,10 +70,6 @@ div.Images {
   padding: 22px;
   border-radius: 50%;
   transition: all 0.4s ease;
-}
-.Images i:hover {
-  transform: scale(1.5);
-  color: rgba(255, 255, 255, 1);
 }
 
 .Images .background-0 {
@@ -119,6 +103,24 @@ div.Images {
 }
 .Images .none {
   display: none;
+}
+
+@media (pointer: fine) {
+  .Images a:hover + .cover-bottom::before {
+    clip-path: circle(100% at 50% 50%);
+    z-index: 1;
+    background: rgba(255, 255, 255, 20%);
+    box-sizing: border-box;
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.25);
+  }
+  .Images a:hover ~ img {
+    z-index: 0;
+  }
+  .Images i:hover {
+    transform: scale(1.5);
+    color: rgba(255, 255, 255, 1);
+  }
 }
 
 @media (max-width: 750px) {

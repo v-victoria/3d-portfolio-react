@@ -28,7 +28,7 @@ export default function OpenCloseButton({
 
   useEffect(() => {
     if (runTimer) {
-      const interval = setInterval(() => setTime(Date.now()), 500);
+      const interval = setInterval(() => setTime(Date.now()), 700);
       return () => {
         clearInterval(interval);
       };
