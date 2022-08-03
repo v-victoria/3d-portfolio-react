@@ -71,7 +71,10 @@ div.Images {
   border-radius: 50%;
   transition: all 0.4s ease;
 }
-
+.Images i:hover {
+  transform: scale(1.5);
+  color: rgba(255, 255, 255, 1);
+}
 .Images .background-0 {
   background: rgba(8, 202, 209, 25%);
 }
@@ -116,10 +119,6 @@ div.Images {
   }
   .Images a:hover ~ img {
     z-index: 0;
-  }
-  .Images i:hover {
-    transform: scale(1.5);
-    color: rgba(255, 255, 255, 1);
   }
 }
 
